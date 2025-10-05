@@ -1,0 +1,28 @@
+stages:
+  preprocessed:
+    cmd: python src/preprocess.py
+    deps: 
+      - data/Iris.csv
+    outs:
+      - data/preprocessed.csv  
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - data/preprocessed.csv
+    params:
+      - params.yaml
+    outs:
+      - models/random_forest.pkl
+
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+      - src/evaluate.py
+      - models/random_forest.pkl
+    params:
+      - params.yaml
+    outs:
+      - models/model.joblib
+    metrics:  
+      - metrics.json  

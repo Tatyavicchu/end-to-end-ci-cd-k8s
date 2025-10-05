@@ -1,0 +1,11 @@
+flask
+pandas
+scikit-learn
+joblib
+pyyaml
+dvc
+
+
+# optional utils
+matplotlib
+seaborn
